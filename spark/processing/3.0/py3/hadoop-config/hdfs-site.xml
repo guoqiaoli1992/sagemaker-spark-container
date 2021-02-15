@@ -16,4 +16,18 @@
          <description>Path on the local filesystem where the NameNode stores the namespace and transaction logs per\
  sistently.</description>
      </property>
+
+    <property>
+         <name>dfs.client.block.write.replace-datanode-on-failure.policy</name>
+         <value>ALWAYS</value>
+         <description>Path on the local filesystem where the NameNode stores the namespace and transaction logs per\
+ sistently.</description>
+     </property>
+
+    <property>
+         <name>dfs.client.block.write.replace-datanode-on-failure.best-effort</name>
+         <value>true</value>
+         <description>Path on the local filesystem where the NameNode stores the namespace and transaction logs per\
+ sistently.</description>
+     </property>
  </configuration>

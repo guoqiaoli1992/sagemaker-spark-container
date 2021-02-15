@@ -31,15 +31,16 @@ all: build test
 # Downloads EMR packages. Skips if the tar file containing EMR packages has been made.
 
 # Builds and moves container python library into the Docker build context
-build-container-library:
+build-container-library: init
 	python setup.py bdist_wheel;
 	cp dist/*.whl ${BUILD_CONTEXT}
 
 init:
 	pip install pipenv --upgrade
-	pipenv install
+	pipenv install --system
+	cp {Pipfile,Pipfile.lock} ${BUILD_CONTEXT}
 
-install-container-library: init build-container-library
+install-container-library: build-container-library
 	pip install --upgrade dist/smspark-0.1-py3-none-any.whl
 	safety check  # https://github.com/pyupio/safety
 
